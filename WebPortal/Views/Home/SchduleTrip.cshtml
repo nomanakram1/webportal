@@ -1,0 +1,289 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<div class="row">
+    <div class="col-12">
+        <!--begin::Card-->
+        <div class="card card-custom gutter-b example example-compact">
+            <div class="card-header">
+                <h3 class="card-title">Trip Request Form</h3>
+                <div class="card-toolbar">
+
+                </div>
+            </div>
+            <!--begin::Form-->
+            <form>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <div class="form-group mb-2">
+                                <label>
+                                    Department
+                                    <span class="text-danger">*</span>
+                                </label>
+                                <input type="email" class="form-control" placeholder="Department" />
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group mb-2">
+                                <label>
+                                    Patient Name
+                                    <span class="text-danger">*</span>
+                                </label>
+                                <input type="text" class="form-control" placeholder="Patient Name" />
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group mb-2">
+                                <label>
+                                    Date of Transport
+                                    <span class="text-danger">*</span>
+                                </label>
+                                <div class=" col-sm-12">
+                                    <div class="input-group w-100">
+                                        <input type="text" class="form-control" readonly="readonly" value="05/20/2017" id="kt_datepicker_3" />
+                                        <div class="input-group-append">
+                                            <span class="input-group-text">
+                                                <i class="la la-calendar"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group mb-2">
+                                <label>
+                                    Cost Center #
+                                    <span class="text-danger">*</span>
+                                </label>
+                                <input type="number" class="form-control" placeholder="Cost Center Number" />
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group mb-2">
+                                <label>
+                                    MRN
+                                    <span class="text-danger">*</span>
+                                </label>
+                                <input type="number" class="form-control" placeholder="MRN" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+
+                        <div class="col-sm-4">
+                            <div class="form-group mb-2">
+                                <label>
+                                    Pick up address
+                                    <span class="text-danger">*</span>
+                                </label>
+                                <input type="email" class="form-control" placeholder="Pick up address" />
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+
+                            <div class="form-group mb-2">
+                                <label for="exampleSelect1">
+                                    City
+                                    <span class="text-danger">*</span>
+                                </label>
+                                <select class="form-control" id="exampleSelect1">
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                </select>
+                            </div>
+
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group mb-2">
+                                <label>
+                                    Zip
+                                    <span class="text-danger">*</span>
+                                </label>
+                                <select class="form-control" id="exampleSelect1">
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                </select>
+                            </div>
+
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group mb-2">
+                                <label>
+                                    Contact Phone Number
+                                    <span class="text-danger">*</span>
+                                </label>
+                                <input type="number" class="form-control" placeholder="Phone Number" max="10" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <div class="form-group mb-2">
+                                <label>
+                                    Destination address
+                                    <span class="text-danger">*</span>
+                                </label>
+                                <input type="email" class="form-control" placeholder="Enter email" />
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+
+                            <div class="form-group mb-2">
+                                <label for="exampleSelect1">
+                                    City
+                                    <span class="text-danger">*</span>
+                                </label>
+                                <select class="form-control" id="exampleSelect1">
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                </select>
+                            </div>
+
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group mb-2">
+                                <label>
+                                    Zip
+                                    <span class="text-danger">*</span>
+                                </label>
+                                <select class="form-control" id="exampleSelect1">
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                </select>
+                            </div>
+
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group mb-2">
+                                <label>
+                                    Office Phone #
+                                    <span class="text-danger">*</span>
+                                </label>
+                                <input type="number" class="form-control" placeholder="Office Phone Number" />
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group mb-2">
+                                <label>
+                                    Call back #
+                                    <span class="text-danger">*</span>
+                                </label>
+                                <input type="number" class="form-control" placeholder="Enter email" />
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group mb-2">
+                                <label>
+                                    Transport Type
+                                    <span class="text-danger">*</span>
+                                </label>
+                                <select class="form-control" id="exampleSelect1">
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                </select>
+                            </div>
+
+                        </div>
+                        <div class="col-sm-4">
+                            <label>
+                                Pick up Time
+                                <span class="text-danger">*</span>
+                            </label>
+                            <div class="input-group timepicker">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="la la-exclamation-circle"></i>
+                                    </span>
+                                </div>
+                                <input class="form-control" id="kt_timepicker_4" readonly="readonly" value="10:30:20 AM" type="text" />
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <label>
+                                Appointment Time
+                                <span class="text-danger">*</span>
+                            </label>
+                            <div class="input-group timepicker">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="la la-exclamation-circle"></i>
+                                    </span>
+                                </div>
+                                <input class="form-control" id="kt_timepicker_4" readonly="readonly" value="10:30:20 AM" type="text" />
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="row">
+                                <div class="col-6">
+                                    <label>Return Time</label>
+                                    <div class="input-group timepicker">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">
+                                                <i class="la la-exclamation-circle"></i>
+                                            </span>
+                                        </div>
+                                        <input class="form-control" id="kt_timepicker_4" readonly="readonly" value="10:30:20 AM" type="text" />
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <label>Will call</label>
+                                    <label class="checkbox checkbox-outline">
+                                        <input type="checkbox" />
+                                        <span class="mx-1"></span>
+                                        Option 2
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group mb-2">
+                                <label>
+                                    Requested By
+                                    <span class="text-danger">*</span>
+                                </label>
+                                <input type="email" class="form-control" placeholder="Enter email" />
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group mb-2">
+                                <label>
+                                    Comments
+                                    <span class="text-danger">*</span>
+                                </label>
+                                <textarea class="form-control" id="exampleTextarea" rows="3"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <button class="btn btn-primary float-right">SCHEDULE TRIP</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <!--end::Form-->
+        </div>
+        <!--end::Card-->
+
+    </div>
+
+</div>

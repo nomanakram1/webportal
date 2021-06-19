@@ -14,7 +14,7 @@
                 </div>
             </div>
             <!--begin::Form-->
-            <form>
+            <form method="post" asp-action="SchduleTrip" asp-controller="home">
                 <div class="card-body">
                     <div class="row">
                         <div class="col-sm-4">
@@ -23,7 +23,7 @@
                                     Department
                                     <span class="text-danger">*</span>
                                 </label>
-                                <input type="email" class="form-control" placeholder="Department" />
+                                <input type="text" class="form-control" placeholder="Department" name="Department" />
                             </div>
                         </div>
                         <div class="col-sm-4">
@@ -32,7 +32,16 @@
                                     Patient Name
                                     <span class="text-danger">*</span>
                                 </label>
-                                <input type="text" class="form-control" placeholder="Patient Name" />
+                                <input type="text" class="form-control" placeholder="Patient First Name" name="PatientFirstName" />
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group mb-2">
+                                <label>
+                                    Patient Name
+                                    <span class="text-danger">*</span>
+                                </label>
+                                <input type="text" class="form-control" placeholder="Patient Last Name" name="PatientLastName" />
                             </div>
                         </div>
                         <div class="col-sm-4">
@@ -43,7 +52,7 @@
                                 </label>
                                 <div class=" col-sm-12">
                                     <div class="input-group w-100">
-                                        <input type="text" class="form-control" readonly="readonly" value="05/20/2017" id="kt_datepicker_3" />
+                                        <input type="text" class="form-control" readonly="readonly" value="05/20/2017" id="kt_datepicker_3" name="TransportDate" />
                                         <div class="input-group-append">
                                             <span class="input-group-text">
                                                 <i class="la la-calendar"></i>
@@ -53,44 +62,137 @@
                                 </div>
                             </div>
                         </div>
+
                         <div class="col-sm-4">
                             <div class="form-group mb-2">
                                 <label>
                                     Cost Center #
                                     <span class="text-danger">*</span>
                                 </label>
-                                <input type="number" class="form-control" placeholder="Cost Center Number" />
+                                <input type="number" class="form-control" placeholder="Cost Center Number" name="CostCenterNumber" />
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4">
+                            <div class="form-group mb-2">
+                                <label>
+                                    MRN #
+                                    <span class="text-danger">*</span>
+                                </label>
+                                <input type="number" class="form-control" placeholder="MRN" name="MRN" />
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4">
+                            <div class="form-group mb-2">
+                                <label>
+                                    PickupAddress
+                                    <span class="text-danger">*</span>
+                                </label>
+                                <input type="text" class="form-control" placeholder="PickupAddress" name="PickupAddress" />
                             </div>
                         </div>
                         <div class="col-sm-4">
                             <div class="form-group mb-2">
                                 <label>
-                                    MRN
+                                    PickupCity
                                     <span class="text-danger">*</span>
                                 </label>
-                                <input type="number" class="form-control" placeholder="MRN" />
+                                <input type="text" class="form-control" placeholder="PickupCity" name="PickupCity" />
                             </div>
                         </div>
+                        <div class="col-sm-4">
+                            <div class="form-group mb-2">
+                                <label>
+                                    PickupZip
+                                    <span class="text-danger">*</span>
+                                </label>
+                                <input type="int" class="form-control" placeholder="PickupZip" name="PickupZip" />
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group mb-2">
+                                <label>
+                                    ContactPhone
+                                    <span class="text-danger">*</span>
+                                </label>
+                                <input type="text" class="form-control" placeholder="ContactPhone" name="ContactPhone" />
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group mb-2">
+                                <label>
+                                    DestinationAddress
+                                    <span class="text-danger">*</span>
+                                </label>
+                                <input type="text" class="form-control" placeholder="DestinationAddress" name="DestinationAddress" />
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group mb-2">
+                                <label>
+                                    DestinationCity
+                                    <span class="text-danger">*</span>
+                                </label>
+                                <input type="text" class="form-control" placeholder="DestinationCity" name="DestinationCity" />
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group mb-2">
+                                <label>
+                                    DestinationZip
+                                    <span class="text-danger">*</span>
+                                </label>
+                                <input type="text" class="form-control" placeholder="DestinationZip" name="DestinationZip" />
+                            </div>
+                        </div><div class="col-sm-4">
+                            <div class="form-group mb-2">
+                                <label>
+                                    OfficePhone
+                                    <span class="text-danger">*</span>
+                                </label>
+                                <input type="text" class="form-control" placeholder="OfficePhone" name="OfficePhone" />
+                            </div>
+                        </div>
+
                     </div>
                     <div class="row">
 
                         <div class="col-sm-4">
                             <div class="form-group mb-2">
                                 <label>
-                                    Pick up address
+                                    Comment
                                     <span class="text-danger">*</span>
                                 </label>
-                                <input type="email" class="form-control" placeholder="Pick up address" />
+                                <input type="text" class="form-control" placeholder="Comments" name="Comments" />
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group mb-2">
+                                <label>
+                                    RequestedBy
+                                    <span class="text-danger">*</span>
+                                </label>
+                                <input type="text" class="form-control" placeholder="RequestedBy" name="RequestedBy" />
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group mb-2">
+                                <label>
+                                    CallBackNumber
+                                    <span class="text-danger">*</span>
+                                </label>
+                                <input type="text" class="form-control" placeholder="CallBackNumber" name="CallBackNumber" />
                             </div>
                         </div>
                         <div class="col-sm-4">
 
                             <div class="form-group mb-2">
                                 <label for="exampleSelect1">
-                                    City
+                                    TransportType
                                     <span class="text-danger">*</span>
                                 </label>
-                                <select class="form-control" id="exampleSelect1">
+                                <select class="form-control" id="exampleSelect1" name="TransportType">
                                     <option>1</option>
                                     <option>2</option>
                                     <option>3</option>
@@ -99,110 +201,9 @@
                                 </select>
                             </div>
 
-                        </div>
-                        <div class="col-sm-4">
-                            <div class="form-group mb-2">
-                                <label>
-                                    Zip
-                                    <span class="text-danger">*</span>
-                                </label>
-                                <select class="form-control" id="exampleSelect1">
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
-                                </select>
-                            </div>
-
-                        </div>
-                        <div class="col-sm-4">
-                            <div class="form-group mb-2">
-                                <label>
-                                    Contact Phone Number
-                                    <span class="text-danger">*</span>
-                                </label>
-                                <input type="number" class="form-control" placeholder="Phone Number" max="10" />
-                            </div>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-sm-4">
-                            <div class="form-group mb-2">
-                                <label>
-                                    Destination address
-                                    <span class="text-danger">*</span>
-                                </label>
-                                <input type="email" class="form-control" placeholder="Enter email" />
-                            </div>
-                        </div>
-                        <div class="col-sm-4">
-
-                            <div class="form-group mb-2">
-                                <label for="exampleSelect1">
-                                    City
-                                    <span class="text-danger">*</span>
-                                </label>
-                                <select class="form-control" id="exampleSelect1">
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
-                                </select>
-                            </div>
-
-                        </div>
-                        <div class="col-sm-4">
-                            <div class="form-group mb-2">
-                                <label>
-                                    Zip
-                                    <span class="text-danger">*</span>
-                                </label>
-                                <select class="form-control" id="exampleSelect1">
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
-                                </select>
-                            </div>
-
-                        </div>
-                        <div class="col-sm-4">
-                            <div class="form-group mb-2">
-                                <label>
-                                    Office Phone #
-                                    <span class="text-danger">*</span>
-                                </label>
-                                <input type="number" class="form-control" placeholder="Office Phone Number" />
-                            </div>
-                        </div>
-                        <div class="col-sm-4">
-                            <div class="form-group mb-2">
-                                <label>
-                                    Call back #
-                                    <span class="text-danger">*</span>
-                                </label>
-                                <input type="number" class="form-control" placeholder="Enter email" />
-                            </div>
-                        </div>
-                        <div class="col-sm-4">
-                            <div class="form-group mb-2">
-                                <label>
-                                    Transport Type
-                                    <span class="text-danger">*</span>
-                                </label>
-                                <select class="form-control" id="exampleSelect1">
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
-                                </select>
-                            </div>
-
-                        </div>
                         <div class="col-sm-4">
                             <label>
                                 Pick up Time
@@ -214,7 +215,7 @@
                                         <i class="la la-exclamation-circle"></i>
                                     </span>
                                 </div>
-                                <input class="form-control" id="kt_timepicker_4" readonly="readonly" value="10:30:20 AM" type="text" />
+                                <input class="form-control" id="kt_timepicker_4" readonly="readonly" value="10:30:20 AM" type="datetime" name="PickupTime" />
                             </div>
                         </div>
                         <div class="col-sm-4">
@@ -228,7 +229,7 @@
                                         <i class="la la-exclamation-circle"></i>
                                     </span>
                                 </div>
-                                <input class="form-control" id="kt_timepicker_4" readonly="readonly" value="10:30:20 AM" type="text" />
+                                <input class="form-control" id="kt_timepicker_4" readonly="readonly" value="10:30:20 AM" type="datetime" name="AppointmentTime"/>
                             </div>
                         </div>
                         <div class="col-sm-4">
@@ -241,41 +242,24 @@
                                                 <i class="la la-exclamation-circle"></i>
                                             </span>
                                         </div>
-                                        <input class="form-control" id="kt_timepicker_4" readonly="readonly" value="10:30:20 AM" type="text" />
+                                        <input class="form-control" id="kt_timepicker_4" readonly="readonly" value="10:30:20 AM" type="datetime" name="ReturnTime"/>
                                     </div>
                                 </div>
-                                <div class="col-6">
-                                    <label>Will call</label>
-                                    <label class="checkbox checkbox-outline">
-                                        <input type="checkbox" />
-                                        <span class="mx-1"></span>
-                                        Option 2
-                                    </label>
-                                </div>
                             </div>
                         </div>
                         <div class="col-sm-4">
                             <div class="form-group mb-2">
                                 <label>
-                                    Requested By
+                                    Reservation UI
                                     <span class="text-danger">*</span>
                                 </label>
-                                <input type="email" class="form-control" placeholder="Enter email" />
-                            </div>
-                        </div>
-                        <div class="col-sm-4">
-                            <div class="form-group mb-2">
-                                <label>
-                                    Comments
-                                    <span class="text-danger">*</span>
-                                </label>
-                                <textarea class="form-control" id="exampleTextarea" rows="3"></textarea>
+                                <input type="text" class="form-control" placeholder="Reservation UI" name="ReservationUI"/>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-12">
-                            <button class="btn btn-primary float-right">SCHEDULE TRIP</button>
+                            <button type="submit" class="btn btn-primary float-right">SCHEDULE TRIP</button>
                         </div>
                     </div>
                 </div>

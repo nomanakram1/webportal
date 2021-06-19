@@ -4,78 +4,78 @@ var KTDatatablesExtensionsResponsive = function() {
 	var initTable1 = function() {
 		var table = $('#kt_datatable');
 
-		// begin first table
 		table.DataTable({
-			responsive: true,
-			columnDefs: [
-				{
-					width: '150px',
-					targets: 0
-				},
-				{
-					targets: -1,
-					title: 'Actions',
-					orderable: false,
-					render: function(data, type, full, meta) {
-						return '\
-							<div class="dropdown dropdown-inline">\
-								<a href="javascript:;" class="btn btn-sm btn-clean btn-icon" data-toggle="dropdown">\
-	                                <i class="la la-cog"></i>\
-	                            </a>\
-							  	<div class="dropdown-menu dropdown-menu-sm dropdown-menu-right">\
-									<ul class="nav nav-hoverable flex-column">\
-							    		<li class="nav-item"><a class="nav-link" href="#"><i class="nav-icon la la-edit"></i><span class="nav-text">Edit Details</span></a></li>\
-							    		<li class="nav-item"><a class="nav-link" href="#"><i class="nav-icon la la-leaf"></i><span class="nav-text">Update Status</span></a></li>\
-							    		<li class="nav-item"><a class="nav-link" href="#"><i class="nav-icon la la-print"></i><span class="nav-text">Print</span></a></li>\
-									</ul>\
-							  	</div>\
-							</div>\
-							<a href="javascript:;" class="btn btn-sm btn-clean btn-icon" title="Edit details">\
-								<i class="la la-edit"></i>\
-							</a>\
-							<a href="javascript:;" class="btn btn-sm btn-clean btn-icon" title="Delete">\
-								<i class="la la-trash"></i>\
-							</a>\
-						';
-					},
-				},
-				{
-					width: '75px',
-					targets: 16,
-					render: function(data, type, full, meta) {
-						var status = {
-							1: {'title': 'Pending', 'class': 'label-light-primary'},
-							2: {'title': 'Delivered', 'class': ' label-light-danger'},
-							3: {'title': 'Canceled', 'class': ' label-light-primary'},
-							4: {'title': 'Success', 'class': ' label-light-success'},
-							5: {'title': 'Info', 'class': ' label-light-info'},
-							6: {'title': 'Danger', 'class': ' label-light-danger'},
-							7: {'title': 'Warning', 'class': ' label-light-warning'},
-						};
-						if (typeof status[data] === 'undefined') {
-							return data;
-						}
-						return '<span class="label label-lg font-weight-bold' + status[data].class + ' label-inline">' + status[data].title + '</span>';
-					},
-				},
-				{
-					width: '75px',
-					targets: 17,
-					render: function(data, type, full, meta) {
-						var status = {
-							1: {'title': 'Online', 'state': 'danger'},
-							2: {'title': 'Retail', 'state': 'primary'},
-							3: {'title': 'Direct', 'state': 'success'},
-						};
-						if (typeof status[data] === 'undefined') {
-							return data;
-						}
-						return '<span class="label label-' + status[data].state + ' label-dot mr-2"></span>' +
-							'<span class="font-weight-bold text-' + status[data].state + '">' + status[data].title + '</span>';
-					}
-				}
-			]
-		});
+            responsive: true,
+            "info": false,
+            columns: [
+                { data: 'ReservationId', visible: false, searchable: false },
+                { data: 'ReservationUI' },
+                { data: 'Department', "bSortable": true },
+                { data: 'TransportDate' },
+                { data: 'CostCenterNumber', "bSortable": false },
+                { data: 'MRN', "bSortable": false },
+                { data: 'PatientFirstName', "bSortable": false },
+                { data: 'PatientLastName', "bSortable": false },
+                { data: 'PickupAddress', "bSortable": false },
+                { data: 'PickupCity', "bSortable": false },
+                { data: 'PickupZip', "bSortable": false },
+                { data: 'ContactPhone', "bSortable": false },
+                { data: 'DestinationAddress', "bSortable": false },
+                { data: 'DestinationCity', "bSortable": false },
+                { data: 'DestinationZip', "bSortable": false },
+                { data: 'OfficePhone', "bSortable": false },
+                { data: 'TransportType', "bSortable": false },
+                { data: 'PickupTime', "bSortable": false },
+                { data: 'AppointmentTime', "bSortable": false },
+                { data: 'ReturnTime', "bSortable": false },
+                { data: 'Comments', "bSortable": false },
+                { data: 'RequestedBy', "bSortable": false },
+                { data: 'CallBackNumber', "bSortable": false },
+                { data: 'CreatedOn', "bSortable": false },
+            ],
+            rowId: "ReservationId"
+        });
+
+        $.ajax({
+            url: "/Home/GetReservations",
+            type: "GET",
+            success: function (response, status) {
+                if (status == "success") {
+                    console.log(response);
+                    var table = $('#kt_datatable').DataTable();
+                    response.map(element => {
+                        var obj = {
+                            "ReservationId": element["reservationId"],
+                            "ReservationUI": element["reservationUI"],
+                            "Department": element["department"],
+                            "TransportDate": element["transportDate"],
+                            "CostCenterNumber": element["costCenterNumber"],
+                            "MRN": element["mrn"],
+                            "PatientFirstName": element["patientFirstName"],
+                            "PatientLastName": element["patientLastName"],
+                            "PickupAddress": element["pickupAddress"],
+                            "PickupCity": element["pickupCity"],
+                            "PickupZip": element["pickupZip"],
+                            "ContactPhone": element["contactPhone"],
+                            "DestinationAddress": element["destinationAddress"],
+                            "DestinationCity": element["destinationCity"],
+                            "DestinationZip": element["destinationZip"],
+                            "OfficePhone": element["officePhone"],
+                            "TransportType": element["transportType"],
+                            "PickupTime": element["pickupTime"].substr(11, element["pickupTime"].length),
+                            "AppointmentTime": element["appointmentTime"].substr(11, element["appointmentTime"].length),
+                            "ReturnTime": element["returnTime"].substr(11, element["returnTime"].length),
+                            "Comments": element["comments"],
+                            "RequestedBy": element["requestedBy"],
+                            "CallBackNumber": element["callBackNumber"],
+                            "CreatedOn": element["createdOn"].substr(0, 10),
+                        }
+                        table.row.add(obj).draw();
+                    })
+                    table.responsive.recalc()
+                }
+            }
+        })
 	};
 
 	return {

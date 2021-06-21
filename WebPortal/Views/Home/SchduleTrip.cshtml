@@ -14,7 +14,7 @@
                 </div>
             </div>
             <!--begin::Form-->
-            <form method="post" asp-action="SchduleTrip" asp-controller="home">
+            <form class="form" id="kt_form_1" method="post" asp-action="SchduleTrip" asp-controller="home">
                 <div class="card-body">
                     <div class="row">
                         <div class="col-sm-4">
@@ -29,19 +29,19 @@
                         <div class="col-sm-4">
                             <div class="form-group mb-2">
                                 <label>
-                                    Patient Name
+                                    First Name
                                     <span class="text-danger">*</span>
                                 </label>
-                                <input type="text" class="form-control" placeholder="Patient First Name" name="PatientFirstName" />
+                                <input type="text" class="form-control" placeholder="First Name" name="PatientFirstName" />
                             </div>
                         </div>
                         <div class="col-sm-4">
                             <div class="form-group mb-2">
                                 <label>
-                                    Patient Name
+                                    Last Name
                                     <span class="text-danger">*</span>
                                 </label>
-                                <input type="text" class="form-control" placeholder="Patient Last Name" name="PatientLastName" />
+                                <input type="text" class="form-control" placeholder="Last Name" name="PatientLastName" />
                             </div>
                         </div>
                         <div class="col-sm-4">
@@ -50,14 +50,12 @@
                                     Date of Transport
                                     <span class="text-danger">*</span>
                                 </label>
-                                <div class=" col-sm-12">
-                                    <div class="input-group w-100">
-                                        <input type="text" class="form-control" readonly="readonly" value="05/20/2017" id="kt_datepicker_3" name="TransportDate" />
-                                        <div class="input-group-append">
-                                            <span class="input-group-text">
-                                                <i class="la la-calendar"></i>
-                                            </span>
-                                        </div>
+                                <div class="input-group w-100">
+                                    <input type="text" class="form-control" readonly="readonly" value="05/20/2017" id="kt_datepicker_3" name="TransportDate" />
+                                    <div class="input-group-append">
+                                        <span class="input-group-text">
+                                            <i class="la la-calendar"></i>
+                                        </span>
                                     </div>
                                 </div>
                             </div>
@@ -107,7 +105,7 @@
                                     PickupZip
                                     <span class="text-danger">*</span>
                                 </label>
-                                <input type="int" class="form-control" placeholder="PickupZip" name="PickupZip" />
+                                <input type="number" class="form-control" placeholder="PickupZip" name="PickupZip" />
                             </div>
                         </div>
                         <div class="col-sm-4">
@@ -119,6 +117,9 @@
                                 <input type="text" class="form-control" placeholder="ContactPhone" name="ContactPhone" />
                             </div>
                         </div>
+                    </div>
+                    <hr class="bg-light" />
+                    <div class="row">
                         <div class="col-sm-4">
                             <div class="form-group mb-2">
                                 <label>
@@ -193,11 +194,10 @@
                                     <span class="text-danger">*</span>
                                 </label>
                                 <select class="form-control" id="exampleSelect1" name="TransportType">
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
+                                    <option value="1">AMB</option>
+                                    <option value="2">W/C</option>
+                                    <option value="3">STR</option>
+
                                 </select>
                             </div>
 
@@ -229,7 +229,7 @@
                                         <i class="la la-exclamation-circle"></i>
                                     </span>
                                 </div>
-                                <input class="form-control" id="kt_timepicker_4" readonly="readonly" value="10:30:20 AM" type="datetime" name="AppointmentTime"/>
+                                <input class="form-control" id="kt_timepicker_4" readonly="readonly" value="10:30:20 AM" type="datetime" name="AppointmentTime" />
                             </div>
                         </div>
                         <div class="col-sm-4">
@@ -242,8 +242,15 @@
                                                 <i class="la la-exclamation-circle"></i>
                                             </span>
                                         </div>
-                                        <input class="form-control" id="kt_timepicker_4" readonly="readonly" value="10:30:20 AM" type="datetime" name="ReturnTime"/>
+                                        <input class="form-control" id="kt_timepicker_4" readonly="readonly" value="10:30:20 AM" type="datetime" name="ReturnTime" />
                                     </div>
+                                </div>
+                                <div class="col-6">
+                                    <label class="mt-5"></label>
+                                    <label class="checkbox checkbox-outline">
+                                        <input type="checkbox" name="checkboxes">
+                                        <span class="mx-1"></span>Will Call
+                                    </label>
                                 </div>
                             </div>
                         </div>
@@ -253,13 +260,13 @@
                                     Reservation UI
                                     <span class="text-danger">*</span>
                                 </label>
-                                <input type="text" class="form-control" placeholder="Reservation UI" name="ReservationUI"/>
+                                <input type="text" class="form-control" placeholder="Reservation UI" name="ReservationUI" />
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-12">
-                            <button type="submit" class="btn btn-primary float-right">SCHEDULE TRIP</button>
+                            <button type="submit" class="btn btn-primary float-right" id="schduleTripSubmit">SCHEDULE TRIP</button>
                         </div>
                     </div>
                 </div>

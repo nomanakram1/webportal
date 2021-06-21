@@ -3,7 +3,7 @@
 <head>
     <base href="">
     <meta charset="utf-8" />
-    <title>Metronic Live preview | Keenthemes</title>
+    <title>Web Portal</title>
     <meta name="description" content="Updates and statistics" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <link rel="canonical" href="https://keenthemes.com/metronic" />
@@ -35,7 +35,7 @@
     <div id="kt_header_mobile" class="header-mobile bg-primary header-mobile-fixed">
         <!--begin::Logo-->
         <a href="index.html">
-            <img alt="Logo" src="~/assets/media/logos/logo-letter-9.png" class="max-h-30px" />
+            <img alt="Logo" src="~/Home/LandingPage" class="max-h-30px" />
         </a>
         <!--end::Logo-->
         <!--begin::Toolbar-->
@@ -94,27 +94,27 @@
                                         }
                                     </div>
 
+                                    <!--<div class="mx-1">
+        @if (User.Identity.IsAuthenticated)
+        {
+            <span class="symbol symbol-35">
+                <a href="~/Home/LandingPage" class="btn btn-sm text-white bg-white-o-30">Landing page</a>
+            </span>
+        }
+    </div>-->
                                     <div class="mx-1">
                                         @if (User.Identity.IsAuthenticated)
                                         {
-                                            <span class="symbol symbol-35">
-                                                <a href="~/Home/LandingPage" class="btn btn-sm text-white bg-white-o-30">Landing page</a>
-                                            </span>
-                                        }
-                                    </div>
-                                    <div class="mx-1">
-                                        @if (User.Identity.IsAuthenticated)
-                                        {
-                                            <div style="display: inline; color: white;">@User.Identity.Name</div>
+                                            <!--<div style="display: inline; color: white;">@User.Identity.Name</div>-->
                                             <form method="post" asp-controller="Home" asp-action="Logout" class="symbol symbol-35">
-                                                <input type="submit" class="btn btn-sm text-white bg-white-o-30" value="Logout" />
+                                                <input type="submit" class="btn btn-sm text-white bg-white-o-30" value="LOG OFF" />
                                             </form>
                                         }
                                     </div>
 
                                 </div>
-                                <!--end::User-->
-                            </div>
+        <!--end::User-->
+                                        </div>
                             <!--end::Topbar-->
                         </div>
                         <!--end::Container-->
@@ -141,19 +141,20 @@
                 <!--begin::Footer-->
                 <div class="footer bg-white py-4 d-flex flex-lg-column" id="kt_footer">
                     <!--begin::Container-->
-                    <div class="container d-flex flex-column flex-md-row align-items-center justify-content-between">
-                        <!--begin::Copyright-->
-                        <div class="text-dark order-2 order-md-1">
-                            <span class="text-muted font-weight-bold mr-2">2021©</span>
-                            <a href="http://keenthemes.com/metronic" target="_blank" class="text-dark-75 text-hover-primary">Keenthemes</a>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12 text-center">
+                                <div class="text-dark order-2 order-md-1">
+                                    <span class="text-muted font-weight-bold mr-2">2021©</span>
+                                    <a href="http://keenthemes.com/metronic" target="_blank" class="text-dark-75 text-hover-primary">Webportal</a>
+                                </div>
+                            </div>
                         </div>
+                        <!--begin::Copyright-->
+                        
                         <!--end::Copyright-->
                         <!--begin::Nav-->
-                        <div class="nav nav-dark order-1 order-md-2">
-                            <a href="http://keenthemes.com/metronic" target="_blank" class="nav-link pr-3 pl-0">About</a>
-                            <a href="http://keenthemes.com/metronic" target="_blank" class="nav-link px-3">Team</a>
-                            <a href="http://keenthemes.com/metronic" target="_blank" class="nav-link pl-3 pr-0">Contact</a>
-                        </div>
+                       
                         <!--end::Nav-->
                     </div>
                     <!--end::Container-->
@@ -1161,6 +1162,7 @@
     <!--end::Page Scripts-->
     <!--begin::Page Scripts(used by this page)-->
     <script src="~/assets/js/pages/crud/forms/widgets/bootstrap-timepicker.js"></script>
+    <script src="~/assets/js/pages/crud/forms/validation/form-controls.js"></script>
     <!--end::Page Scripts-->
     @RenderSection("Scripts", required: false)
 </body>

@@ -13,7 +13,13 @@
             </span>
             <h3 class="card-label">Reservations</h3>
         </div>
-        
+        <div class="card-toolbar">
+            <div class="d-flex">
+                <input type="text" class="form-control" readonly placeholder="Select date" id="kt_datepicker_1" />
+                <button type="button" class="btn btn-sm btn-primary mx-1" id="filterbydate">Search</button>
+                <button type="button" class="btn btn-sm btn-primary mx-1" id="showAllInDT">Clear</button>
+            </div>
+        </div>
     </div>
     <div class="card-body">
         <!--begin: Datatable-->
@@ -21,77 +27,74 @@
             <thead>
                 <tr>
                     <th>
-                        ReservationId
+                        Reservation Id
                     </th>
                     <th>
-                        ReservationUI
+                        Reservation UI
                     </th>
                     <th>
                         Department
                     </th>
                     <th>
-                        TransportDate
+                        Transport Date
                     </th>
                     <th>
-                        CostCenterNumber
+                        Cost Center Number
                     </th>
                     <th>
                         MRN
                     </th>
                     <th>
-                        PatientFirstName
+                        Patient First Name
                     </th>
                     <th>
-                        PatientLastName
+                        Patient Last Name
                     </th>
                     <th>
-                        PickupAddress
+                        Pick Up Address
                     </th>
                     <th>
-                        PickupCity
+                        Pick Up City
                     </th>
                     <th>
-                        PickupZip
+                        Contact Phone
                     </th>
                     <th>
-                        ContactPhone
+                        Destination Address
                     </th>
                     <th>
-                        DestinationAddress
+                        Destination City
                     </th>
                     <th>
-                        DestinationCity
+                        Office Phone
                     </th>
                     <th>
-                        DestinationZip
+                        Transport Type
                     </th>
                     <th>
-                        OfficePhone
+                        Pickup Time
                     </th>
                     <th>
-                        TransportType
+                        Appointment Time
                     </th>
                     <th>
-                        PickupTime
-                    </th>
-                    <th>
-                        AppointmentTime
-                    </th>
-                    <th>
-                        ReturnTime
+                        Return Time
                     </th>
                     <th>
                         Comments
                     </th>
                     <th>
-                        RequestedBy
+                        Requested By
                     </th>
                     <th>
-                        CallBackNumber
+                        Callback Number
                     </th>
                     <th>
-                        CreatedOn
+                        Created On
                     </th>
+                    @*<th>
+                        𝗠𝗶𝗹𝗲𝗮𝗴𝗲
+                    </th>*@
                 </tr>
             </thead>
             <tbody>
@@ -101,3 +104,104 @@
     </div>
 </div>
 <!--end::Card-->
+
+@section Scripts{ 
+<script>
+    $('#showAllInDT').click(function () {
+        $.ajax({
+            url: "/Home/GetReservations",
+            type: "GET",
+            success: function (response, status) {
+                if (status == "success") {
+                    console.log(response);
+                    var table = $('#kt_datatable').DataTable();
+                    table.clear().draw()
+
+                    response.map(element => {
+                            var obj = {
+                                "ReservationId": element["reservationId"],
+                                "ReservationUI": element["reservationUI"],
+                                "Department": element["department"],
+                                "TransportDate": element["transportDate"].substr(0, 10),
+                                "CostCenterNumber": element["costCenterNumber"],
+                                "MRN": element["mrn"],
+                                "PatientFirstName": element["patientFirstName"],
+                                "PatientLastName": element["patientLastName"],
+                                "PickupAddress": element["pickupAddress"],
+                                "PickupCity": element["pickupCity"],
+                                "ContactPhone": element["contactPhone"],
+                                "DestinationAddress": element["destinationAddress"],
+                                "DestinationCity": element["destinationCity"],
+                                "OfficePhone": element["officePhone"],
+                                "TransportType": element["transportType"],
+                                "PickupTime": element["pickupTime"].substr(11, element["pickupTime"].length),
+                                "AppointmentTime": element["appointmentTime"].substr(11, element["appointmentTime"].length),
+                                "ReturnTime": element["returnTime"].substr(11, element["returnTime"].length),
+                                "Comments": element["comments"],
+                                "RequestedBy": element["requestedBy"],
+                                "CallBackNumber": element["callBackNumber"],
+                                "CreatedOn": element["createdOn"].substr(0, 10),
+                                //"Mileage": parseFloat(element["mileage"]).toFixed(2) + "KM"
+                            }
+                            table.row.add(obj).draw();
+
+                    })
+                    table.responsive.recalc()
+                }
+            }
+        })
+    })
+    $("#filterbydate").click(function () {
+
+        $.ajax({
+            url: "/Home/GetReservations",
+            type: "GET",
+            success: function (response, status) {
+                if (status == "success") {
+                    console.log(response);
+                    var table = $('#kt_datatable').DataTable();
+                    table.clear().draw()
+                    var dateselected = $("#kt_datepicker_1").val();
+                    
+                    response.map(element => {
+                        var date = new Date(element["transportDate"]);
+                        var month = (date.getMonth() + 1) < 10 ? "0" + (date.getMonth() + 1) : (date.getMonth() + 1);
+                        var day = date.getDate() < 10 ? "0" + date.getDate() : date.getDate()
+                        var makeday = month + "/" + day + "/" + date.getFullYear();
+                        if (makeday == dateselected) {
+                            var obj = {
+                                "ReservationId": element["reservationId"],
+                                "ReservationUI": element["reservationUI"],
+                                "Department": element["department"],
+                                "TransportDate": element["transportDate"].substr(0, 10),
+                                "CostCenterNumber": element["costCenterNumber"],
+                                "MRN": element["mrn"],
+                                "PatientFirstName": element["patientFirstName"],
+                                "PatientLastName": element["patientLastName"],
+                                "PickupAddress": element["pickupAddress"],
+                                "PickupCity": element["pickupCity"],
+                                "ContactPhone": element["contactPhone"],
+                                "DestinationAddress": element["destinationAddress"],
+                                "DestinationCity": element["destinationCity"],
+                                "OfficePhone": element["officePhone"],
+                                "TransportType": element["transportType"],
+                                "PickupTime": element["pickupTime"].substr(11, element["pickupTime"].length),
+                                "AppointmentTime": element["appointmentTime"].substr(11, element["appointmentTime"].length),
+                                "ReturnTime": element["returnTime"].substr(11, element["returnTime"].length),
+                                "Comments": element["comments"],
+                                "RequestedBy": element["requestedBy"],
+                                "CallBackNumber": element["callBackNumber"],
+                                "CreatedOn": element["createdOn"].substr(0, 10),
+                                //"Mileage": parseFloat(element["mileage"]).toFixed(2) + "KM"
+                            }
+                            table.row.add(obj).draw();
+                        }
+                        
+                    })
+                    table.responsive.recalc()
+                }
+            }
+        })
+    })
+</script>
+}

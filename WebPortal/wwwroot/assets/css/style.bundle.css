@@ -1,4 +1,4 @@
-@charset "UTF-8";
+﻿@charset "UTF-8";
 /*!
  * Bootstrap v4.6.0 (https://getbootstrap.com/)
  * Copyright 2011-2021 The Bootstrap Authors
@@ -87411,4 +87411,10 @@ body {
   .subheader-enabled.subheader-transparent .content {
     padding-top: 0;
   }
+}
+table tr th{
+    white-space:nowrap!important
+}
+table tr td {
+    white-space: nowrap !important
 }

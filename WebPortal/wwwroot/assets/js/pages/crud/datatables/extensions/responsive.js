@@ -1,4 +1,4 @@
-"use strict";
+﻿"use strict";
 var KTDatatablesExtensionsResponsive = function() {
 
 	var initTable1 = function() {
@@ -18,11 +18,9 @@ var KTDatatablesExtensionsResponsive = function() {
                 { data: 'PatientLastName', "bSortable": false },
                 { data: 'PickupAddress', "bSortable": false },
                 { data: 'PickupCity', "bSortable": false },
-                { data: 'PickupZip', "bSortable": false },
                 { data: 'ContactPhone', "bSortable": false },
                 { data: 'DestinationAddress', "bSortable": false },
                 { data: 'DestinationCity', "bSortable": false },
-                { data: 'DestinationZip', "bSortable": false },
                 { data: 'OfficePhone', "bSortable": false },
                 { data: 'TransportType', "bSortable": false },
                 { data: 'PickupTime', "bSortable": false },
@@ -32,6 +30,7 @@ var KTDatatablesExtensionsResponsive = function() {
                 { data: 'RequestedBy', "bSortable": false },
                 { data: 'CallBackNumber', "bSortable": false },
                 { data: 'CreatedOn', "bSortable": false },
+                //{ data: 'Mileage', "bSortable": false },
             ],
             rowId: "ReservationId"
         });
@@ -48,18 +47,16 @@ var KTDatatablesExtensionsResponsive = function() {
                             "ReservationId": element["reservationId"],
                             "ReservationUI": element["reservationUI"],
                             "Department": element["department"],
-                            "TransportDate": element["transportDate"],
+                            "TransportDate": element["transportDate"].substr(0, 10),
                             "CostCenterNumber": element["costCenterNumber"],
                             "MRN": element["mrn"],
                             "PatientFirstName": element["patientFirstName"],
                             "PatientLastName": element["patientLastName"],
                             "PickupAddress": element["pickupAddress"],
                             "PickupCity": element["pickupCity"],
-                            "PickupZip": element["pickupZip"],
                             "ContactPhone": element["contactPhone"],
                             "DestinationAddress": element["destinationAddress"],
                             "DestinationCity": element["destinationCity"],
-                            "DestinationZip": element["destinationZip"],
                             "OfficePhone": element["officePhone"],
                             "TransportType": element["transportType"],
                             "PickupTime": element["pickupTime"].substr(11, element["pickupTime"].length),
@@ -69,6 +66,7 @@ var KTDatatablesExtensionsResponsive = function() {
                             "RequestedBy": element["requestedBy"],
                             "CallBackNumber": element["callBackNumber"],
                             "CreatedOn": element["createdOn"].substr(0, 10),
+                            //"Mileage": parseFloat(element["mileage"]).toFixed(2) + "KM"
                         }
                         table.row.add(obj).draw();
                     })

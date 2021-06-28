@@ -6,54 +6,129 @@ var KTFormControls = function () {
 			document.getElementById('kt_form_1'),
 			{
 				fields: {
-					email: {
+					Department: {
 						validators: {
 							notEmpty: {
-								message: 'Email is required'
-							},
-							emailAddress: {
-								message: 'The value is not a valid email address'
-							}
+								message: 'Department is required'
+							},						
 						}
 					},
 
-					url: {
+					PatientFirstName: {
 						validators: {
 							notEmpty: {
-								message: 'Website URL is required'
+								message: 'First Name is required'
 							},
-							uri: {
-								message: 'The website address is not valid'
-							}
 						}
 					},
 
-					digits: {
+					PatientLastName: {
 						validators: {
 							notEmpty: {
-								message: 'Digits is required'
-							},
-							digits: {
-								message: 'The velue is not a valid digits'
-							}
+								message: 'Last Name is required'
+							},						
 						}
 					},
 
-					creditcard: {
+					CostCenterNumber: {
 						validators: {
 							notEmpty: {
-								message: 'Credit card number is required'
+								message: 'Center Number is required'
 							},
-							creditCard: {
-								message: 'The credit card number is not valid'
+						}
+					},
+					MRN: {
+						validators: {
+							notEmpty: {
+								message: 'MRN is required'
+							},
+						}
+					},
+					PickupAddress: {
+						validators: {
+							notEmpty: {
+								message: 'Pickup Address is required'
+							},
+						}
+					},
+					PickupCity: {
+						validators: {
+							notEmpty: {
+								message: 'Pickup City is required'
+							},
+						}
+					},
+					PickupZip: {
+						validators: {
+							notEmpty: {
+								message: 'Pickup Zip is required'
+							},
+						}
+					},
+					DestinationAddress: {
+						validators: {
+							notEmpty: {
+								message: 'Destination Address is required'
+							},
+						}
+					},
+					DestinationCity: {
+						validators: {
+							notEmpty: {
+								message: 'Destination City is required'
+							},
+						}
+					},
+					DestinationZip: {
+						validators: {
+							notEmpty: {
+								message: 'Destination Zip is required'
+							},
+						}
+					},
+					Comments: {
+						validators: {
+							notEmpty: {
+								message: 'Comments is required'
+							},
+						}
+					},
+					RequestedBy: {
+						validators: {
+							notEmpty: {
+								message: 'Requested By City is required'
+							},
+						}
+					},
+				
+				
+
+					ContactPhone: {
+						validators: {
+							notEmpty: {
+								message: 'Contact Phone is required'
+							},
+							phone: {
+								country: 'US',
+								message: 'The value is not a valid US phone number'
 							}
 						}
 					},
-
-					phone: {
+					OfficePhone: {
 						validators: {
 							notEmpty: {
-								message: 'US phone number is required'
+								message: 'Office Phone is required'
+							},
+							phone: {
+								country: 'US',
+								message: 'The value is not a valid US phone number'
+							}
+						}
+					},
+					CallBackNumber: {
+						validators: {
+							notEmpty: {
+								message: 'CallBack Number is required'
 							},
 							phone: {
 								country: 'US',
@@ -62,7 +137,7 @@ var KTFormControls = function () {
 						}
 					},
 
-					option: {
+					TransportType: {
 						validators: {
 							notEmpty: {
 								message: 'Please select an option'

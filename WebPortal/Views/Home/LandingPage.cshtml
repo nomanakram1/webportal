@@ -11,58 +11,14 @@
             <span class="card-icon">
                 <i class="flaticon2-bell text-primary"></i>
             </span>
-            <h3 class="card-label">Responsive DataTable</h3>
+            <h3 class="card-label">Reservations</h3>
         </div>
         <div class="card-toolbar">
-            <!--begin::Dropdown-->
-            <!--<div class="dropdown dropdown-inline mr-2">
-                <button type="button" class="btn btn-light-primary font-weight-bolder dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="la la-download"></i>Export
-                </button>-->
-                <!--begin::Dropdown Menu-->
-                <!--<div class="dropdown-menu dropdown-menu-sm dropdown-menu-right">
-                    <ul class="nav flex-column nav-hover">
-                        <li class="nav-header font-weight-bolder text-uppercase text-primary pb-2">Choose an option:</li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon la la-print"></i>
-                                <span class="nav-text">Print</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon la la-copy"></i>
-                                <span class="nav-text">Copy</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon la la-file-excel-o"></i>
-                                <span class="nav-text">Excel</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon la la-file-text-o"></i>
-                                <span class="nav-text">CSV</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon la la-file-pdf-o"></i>
-                                <span class="nav-text">PDF</span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>-->
-                <!--end::Dropdown Menu-->
-            <!--</div>-->
-            <!--end::Dropdown-->
-            <!--begin::Button-->
-            <a href="/home/SchduleTrip" class="btn btn-primary font-weight-bolder">
-                <i class="la la-plus"></i>New Record
-            </a>
-            <!--end::Button-->
+            <div class="d-flex">
+                <input type="text" class="form-control" readonly placeholder="Select date" id="kt_datepicker_1" />
+                <button type="button" class="btn btn-sm btn-primary mx-1" id="filterbydate">Search</button>
+                <button type="button" class="btn btn-sm btn-primary mx-1" id="showAllInDT">Clear</button>
+            </div>
         </div>
     </div>
     <div class="card-body">
@@ -71,77 +27,74 @@
             <thead>
                 <tr>
                     <th>
-                        ReservationId
+                        Reservation Id
                     </th>
                     <th>
-                        ReservationUI
+                        Reservation UI
                     </th>
                     <th>
                         Department
                     </th>
                     <th>
-                        TransportDate
+                        Transport Date
                     </th>
                     <th>
-                        CostCenterNumber
+                        Cost Center Number
                     </th>
                     <th>
                         MRN
                     </th>
                     <th>
-                        PatientFirstName
+                        Patient First Name
                     </th>
                     <th>
-                        PatientLastName
+                        Patient Last Name
                     </th>
                     <th>
-                        PickupAddress
+                        Pick Up Address
                     </th>
                     <th>
-                        PickupCity
+                        Pick Up City
                     </th>
                     <th>
-                        PickupZip
+                        Contact Phone
                     </th>
                     <th>
-                        ContactPhone
+                        Destination Address
                     </th>
                     <th>
-                        DestinationAddress
+                        Destination City
                     </th>
                     <th>
-                        DestinationCity
+                        Office Phone
                     </th>
                     <th>
-                        DestinationZip
+                        Transport Type
                     </th>
                     <th>
-                        OfficePhone
+                        Pickup Time
                     </th>
                     <th>
-                        TransportType
+                        Appointment Time
                     </th>
                     <th>
-                        PickupTime
-                    </th>
-                    <th>
-                        AppointmentTime
-                    </th>
-                    <th>
-                        ReturnTime
+                        Return Time
                     </th>
                     <th>
                         Comments
                     </th>
                     <th>
-                        RequestedBy
+                        Requested By
                     </th>
                     <th>
-                        CallBackNumber
+                        Callback Number
                     </th>
                     <th>
-                        CreatedOn
+                        Created On
                     </th>
+                    @*<th>
+                        𝗠𝗶𝗹𝗲𝗮𝗴𝗲
+                    </th>*@
                 </tr>
             </thead>
             <tbody>
@@ -151,3 +104,104 @@
     </div>
 </div>
 <!--end::Card-->
+
+@section Scripts{ 
+<script>
+    $('#showAllInDT').click(function () {
+        $.ajax({
+            url: "/Home/GetReservations",
+            type: "GET",
+            success: function (response, status) {
+                if (status == "success") {
+                    console.log(response);
+                    var table = $('#kt_datatable').DataTable();
+                    table.clear().draw()
+
+                    response.map(element => {
+                            var obj = {
+                                "ReservationId": element["reservationId"],
+                                "ReservationUI": element["reservationUI"],
+                                "Department": element["department"],
+                                "TransportDate": element["transportDate"].substr(0, 10),
+                                "CostCenterNumber": element["costCenterNumber"],
+                                "MRN": element["mrn"],
+                                "PatientFirstName": element["patientFirstName"],
+                                "PatientLastName": element["patientLastName"],
+                                "PickupAddress": element["pickupAddress"],
+                                "PickupCity": element["pickupCity"],
+                                "ContactPhone": element["contactPhone"],
+                                "DestinationAddress": element["destinationAddress"],
+                                "DestinationCity": element["destinationCity"],
+                                "OfficePhone": element["officePhone"],
+                                "TransportType": element["transportType"],
+                                "PickupTime": element["pickupTime"].substr(11, element["pickupTime"].length),
+                                "AppointmentTime": element["appointmentTime"].substr(11, element["appointmentTime"].length),
+                                "ReturnTime": element["returnTime"].substr(11, element["returnTime"].length),
+                                "Comments": element["comments"],
+                                "RequestedBy": element["requestedBy"],
+                                "CallBackNumber": element["callBackNumber"],
+                                "CreatedOn": element["createdOn"].substr(0, 10),
+                                //"Mileage": parseFloat(element["mileage"]).toFixed(2) + "KM"
+                            }
+                            table.row.add(obj).draw();
+
+                    })
+                    table.responsive.recalc()
+                }
+            }
+        })
+    })
+    $("#filterbydate").click(function () {
+
+        $.ajax({
+            url: "/Home/GetReservations",
+            type: "GET",
+            success: function (response, status) {
+                if (status == "success") {
+                    console.log(response);
+                    var table = $('#kt_datatable').DataTable();
+                    table.clear().draw()
+                    var dateselected = $("#kt_datepicker_1").val();
+                    
+                    response.map(element => {
+                        var date = new Date(element["transportDate"]);
+                        var month = (date.getMonth() + 1) < 10 ? "0" + (date.getMonth() + 1) : (date.getMonth() + 1);
+                        var day = date.getDate() < 10 ? "0" + date.getDate() : date.getDate()
+                        var makeday = month + "/" + day + "/" + date.getFullYear();
+                        if (makeday == dateselected) {
+                            var obj = {
+                                "ReservationId": element["reservationId"],
+                                "ReservationUI": element["reservationUI"],
+                                "Department": element["department"],
+                                "TransportDate": element["transportDate"].substr(0, 10),
+                                "CostCenterNumber": element["costCenterNumber"],
+                                "MRN": element["mrn"],
+                                "PatientFirstName": element["patientFirstName"],
+                                "PatientLastName": element["patientLastName"],
+                                "PickupAddress": element["pickupAddress"],
+                                "PickupCity": element["pickupCity"],
+                                "ContactPhone": element["contactPhone"],
+                                "DestinationAddress": element["destinationAddress"],
+                                "DestinationCity": element["destinationCity"],
+                                "OfficePhone": element["officePhone"],
+                                "TransportType": element["transportType"],
+                                "PickupTime": element["pickupTime"].substr(11, element["pickupTime"].length),
+                                "AppointmentTime": element["appointmentTime"].substr(11, element["appointmentTime"].length),
+                                "ReturnTime": element["returnTime"].substr(11, element["returnTime"].length),
+                                "Comments": element["comments"],
+                                "RequestedBy": element["requestedBy"],
+                                "CallBackNumber": element["callBackNumber"],
+                                "CreatedOn": element["createdOn"].substr(0, 10),
+                                //"Mileage": parseFloat(element["mileage"]).toFixed(2) + "KM"
+                            }
+                            table.row.add(obj).draw();
+                        }
+                        
+                    })
+                    table.responsive.recalc()
+                }
+            }
+        })
+    })
+</script>
+}

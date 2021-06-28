@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WebPortal.Models;
 
 namespace WebPortal.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20210622052110_AddedDistance")]
+    partial class AddedDistance
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -255,11 +257,11 @@ namespace WebPortal.Migrations
                     b.Property<string>("DestinationCity")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Distance")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("MRN")
                         .HasColumnType("int");
-
-                    b.Property<string>("Mileage")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("OfficePhone")
                         .HasColumnType("nvarchar(max)");
@@ -293,6 +295,9 @@ namespace WebPortal.Migrations
 
                     b.Property<int>("TransportType")
                         .HasColumnType("int");
+
+                    b.Property<bool>("WillCall")
+                        .HasColumnType("bit");
 
                     b.HasKey("ReservationId");
 

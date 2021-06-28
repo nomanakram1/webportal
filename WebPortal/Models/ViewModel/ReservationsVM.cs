@@ -1,11 +1,12 @@
 ﻿using System;
-using System.ComponentModel.DataAnnotations;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
-namespace WebPortal.Models
+namespace WebPortal.Models.ViewModel
 {
-    public class Reservations
+    public class ReservationsVM
     {
-        [Key]
         public int ReservationId { get; set; }
         public string ReservationUI { get; set; }
         public string Department { get; set; }
@@ -28,6 +29,7 @@ namespace WebPortal.Models
         public string RequestedBy { get; set; }
         public string CallBackNumber { get; set; }
         public DateTime CreatedOn { get; set; }
-        public string Mileage { get; set; }
+        public string Distance { get; set; }
+        public bool WillCall { get; set; }
     }
 }

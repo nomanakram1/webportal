@@ -21,33 +21,36 @@ var KTLogin = function() {
         var validation;
 
         // Init form validation rules. For more info check the FormValidation plugin's official documentation:https://formvalidation.io/
-  //      validation = FormValidation.formValidation(
-		//	KTUtil.getById('kt_login_signin_form'),
-		//	{
-		//		fields: {
-		//			username: {
-		//				validators: {
-		//					notEmpty: {
-		//						message: 'Username is required'
-		//					}
-		//				}
-		//			},
-		//			password: {
-		//				validators: {
-		//					notEmpty: {
-		//						message: 'Password is required'
-		//					}
-		//				}
-		//			}
-		//		},
-		//		plugins: {
-  //                  trigger: new FormValidation.plugins.Trigger(),
-  //                  submitButton: new FormValidation.plugins.SubmitButton(),
-  //                  //defaultSubmit: new FormValidation.plugins.DefaultSubmit(), // Uncomment this line to enable normal button submit after form validation
-		//			bootstrap: new FormValidation.plugins.Bootstrap()
-		//		}
-		//	}
-		//);
+        validation = FormValidation.formValidation(
+			KTUtil.getById('kt_login_signin_form'),
+			{
+				fields: {
+                    Username: {
+						validators: {
+							notEmpty: {
+								message: 'Email is required'
+                            },
+                            emailAddress: {
+                                message: 'The value is not a valid email address'
+                            }
+						}
+					},
+                    Password: {
+					validators: {
+							notEmpty: {
+								message: 'Password is required'
+							}
+						}
+					}
+				},
+			plugins: {
+                    trigger: new FormValidation.plugins.Trigger(),
+                    submitButton: new FormValidation.plugins.SubmitButton(),
+                    defaultSubmit: new FormValidation.plugins.DefaultSubmit(), // Uncomment this line to enable normal button submit after form validation
+					bootstrap: new FormValidation.plugins.Bootstrap()
+				}
+			}
+		);
 
         $('#kt_login_signin_submit').on('click', function (e) {
             //e.preventDefault();
@@ -103,14 +106,21 @@ var KTLogin = function() {
 			form,
 			{
 				fields: {
-					fullname: {
+                    FirstName: {
 						validators: {
 							notEmpty: {
-								message: 'Username is required'
+                                message: 'First Name is required'
 							}
 						}
-					},
-					email: {
+                    },
+                    LastName: {
+                        validators: {
+                            notEmpty: {
+                                message: 'Last Name is required'
+                            }
+                        }
+                    },
+					Email: {
                         validators: {
 							notEmpty: {
 								message: 'Email address is required'
@@ -119,15 +129,22 @@ var KTLogin = function() {
 								message: 'The value is not a valid email address'
 							}
 						}
-					},
-                    password: {
+                    },
+                    Username: {
+                        validators: {
+                            notEmpty: {
+                                message: 'User Name is required'
+                            }
+                        }
+                    },
+                    Password: {
                         validators: {
                             notEmpty: {
                                 message: 'The password is required'
                             }
                         }
                     },
-                    cpassword: {
+                    CPassword: {
                         validators: {
                             notEmpty: {
                                 message: 'The password confirmation is required'
@@ -148,10 +165,12 @@ var KTLogin = function() {
                         }
                     },
 				},
-				plugins: {
-					trigger: new FormValidation.plugins.Trigger(),
-					bootstrap: new FormValidation.plugins.Bootstrap()
-				}
+                plugins: {
+                    trigger: new FormValidation.plugins.Trigger(),
+                    submitButton: new FormValidation.plugins.SubmitButton(),
+                    defaultSubmit: new FormValidation.plugins.DefaultSubmit(), // Uncomment this line to enable normal button submit after form validation
+                    bootstrap: new FormValidation.plugins.Bootstrap()
+                }
 			}
 		);
 
@@ -195,22 +214,20 @@ var KTLogin = function() {
         });
     }
 
-    var _handleForgotForm = function(e) {
+    var _handleTripRequest = function(e) {
         var validation;
 
         // Init form validation rules. For more info check the FormValidation plugin's official documentation:https://formvalidation.io/
         validation = FormValidation.formValidation(
-			KTUtil.getById('kt_login_forgot_form'),
+            KTUtil.getById('tripRequestForm'),
 			{
 				fields: {
-					email: {
+                    Department: {
 						validators: {
 							notEmpty: {
-								message: 'Email address is required'
+                                message: 'Department is required'
 							},
-                            emailAddress: {
-								message: 'The value is not a valid email address'
-							}
+                           
 						}
 					}
 				},
@@ -222,7 +239,7 @@ var KTLogin = function() {
 		);
 
         // Handle submit button
-        $('#kt_login_forgot_submit').on('click', function (e) {
+        $('#schduleTripSubmit').on('click', function (e) {
             e.preventDefault();
 
             validation.validate().then(function(status) {
@@ -253,6 +270,45 @@ var KTLogin = function() {
         });
     }
 
+    var _handleForgotForm = function () {
+        var validation;
+
+        // Init form validation rules. For more info check the FormValidation plugin's official documentation:https://formvalidation.io/
+        validation = FormValidation.formValidation(
+            KTUtil.getById('kt_login_forgot_form'),
+            {
+                fields: {
+                    Email: {
+                        validators: {
+                            notEmpty: {
+                                message: 'Email is required'
+                            },
+                            emailAddress: {
+                                message: 'The value is not a valid email address'
+                            }
+                        }
+                    },
+                    
+                },
+                plugins: {
+                    trigger: new FormValidation.plugins.Trigger(),
+                    submitButton: new FormValidation.plugins.SubmitButton(),
+                    defaultSubmit: new FormValidation.plugins.DefaultSubmit(), // Uncomment this line to enable normal button submit after form validation
+                    bootstrap: new FormValidation.plugins.Bootstrap()
+                }
+            }
+        );
+        // Handle cancel button
+        $('#kt_login_forgot_cancel').on('click', function (e) {
+            e.preventDefault();
+
+            _showForm('signin');
+        });
+        
+
+       
+    }
+
     // Public Functions
     return {
         // public functions
@@ -262,6 +318,7 @@ var KTLogin = function() {
             _handleSignInForm();
             _handleSignUpForm();
             _handleForgotForm();
+            _handleTripRequest();
         }
     };
 }();
